@@ -21,17 +21,15 @@ const Navbar = () => {
                     SaloonHub
                 </div>
 
-                {/* Desktop Nav */}
                 <div className="hidden md:flex gap-8">
                     <NavLink to="/" className={linkClass}>Home</NavLink>
-                    <NavLink to="/services" className={linkClass}>Services</NavLink>
                     <NavLink to="/features" className={linkClass}>Features</NavLink>
-                    <NavLink to="/pricing" className={linkClass}>Pricing</NavLink>
+                    <NavLink to="/services" className={linkClass}>Services</NavLink>
+                    <NavLink to="/howItWorks" className={linkClass}>How It Works</NavLink>
+                    <NavLink to="/testimonials" className={linkClass}>Testimonials</NavLink>
                     <NavLink to="/about" className={linkClass}>About</NavLink>
-                    <NavLink to="/contact" className={linkClass}>Contact</NavLink>
                 </div>
 
-                {/* Desktop Buttons */}
                 <div className="hidden md:flex gap-4">
                     <NavLink to="/login" className="text-gray-700 hover:text-purple-600 font-medium pt-2">
                         Login
@@ -45,7 +43,9 @@ const Navbar = () => {
                     </NavLink>
                 </div>
 
-                {/* Mobile Menu Button */}
+
+                {/*---------------------------- Mobile Menu Button ---------------------*/}
+
                 <button
                     onClick={() => setOpen(!open)}
                     className="md:hidden text-gray-700"
@@ -54,15 +54,15 @@ const Navbar = () => {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
             {open && (
                 <div className="md:hidden bg-white shadow-md px-6 py-6 space-y-4">
                     <NavLink to="/" onClick={() => setOpen(false)} className={linkClass}>Home</NavLink>
-                    <NavLink to="/services" onClick={() => setOpen(false)} className={linkClass}>Services</NavLink>
                     <NavLink to="/features" onClick={() => setOpen(false)} className={linkClass}>Features</NavLink>
-                    <NavLink to="/pricing" onClick={() => setOpen(false)} className={linkClass}>Pricing</NavLink>
+                    <NavLink to="/services" onClick={() => setOpen(false)} className={linkClass}>Services</NavLink>
+                    <NavLink to="/testimonials" onClick={() => setOpen(false)} className={linkClass}>Testimonials</NavLink>
+                    <NavLink to="/howItWorks" onClick={() => setOpen(false)} className={linkClass}>How It Works</NavLink>
                     <NavLink to="/about" onClick={() => setOpen(false)} className={linkClass}>About</NavLink>
-                    <NavLink to="/contact" onClick={() => setOpen(false)} className={linkClass}>Contact</NavLink>
+
 
                     <div className="pt-4 flex gap-4">
                         <NavLink to="/login" className="text-gray-700 hover:text-purple-600 font-medium">
