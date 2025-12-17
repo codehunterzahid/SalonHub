@@ -16,10 +16,10 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
 
 
-                <div className="flex items-center text-2xl gap-2 font-bold bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                <NavLink to="/" className="flex items-center text-2xl gap-2 font-bold bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
                     <img src={Logo} alt="nav-logo" className="w-8 md:w-10 object-contain" />
                     SaloonHub
-                </div>
+                </NavLink>
 
                 <div className="hidden md:flex gap-8">
                     <NavLink to="/" className={linkClass}>Home</NavLink>
