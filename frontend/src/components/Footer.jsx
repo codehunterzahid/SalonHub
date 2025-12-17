@@ -8,9 +8,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-gray-200 md:px-14 py-16">
-      {/* Top Section */}
+      {/*Footer Top Section */}
       <div className="flex flex-col md:flex-row gap-10">
-        {/* Logo & Contact - 35% */}
         <div className="md:w-2/5">
           <div className="flex items-center mb-4">
             <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-linear-to-r from-purple-500 to-pink-500">
@@ -33,7 +32,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Links Section - 65% */}
         <div className="md:w-3/5 flex flex-col md:flex-row justify-between gap-10">
           {/* Quick Links */}
           <div className="font-bold">
@@ -133,7 +131,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Social & Subscribe */}
+      {/* Socials*/}
       <div className="mt-10 flex flex-col md:flex-row md:justify-between items-center border-t border-gray-700 py-8">
         <div className="flex items-center gap-4 mb-4 md:mb-0">
           <span>Follow Us:</span>
