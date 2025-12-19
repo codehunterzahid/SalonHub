@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import Logo from "../assets/images/Nav-logo.png";
+import Logo from "../../assets/images/Nav-logo.png";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -25,7 +25,7 @@ const Navbar = () => {
                     <NavLink to="/" className={linkClass}>Home</NavLink>
                     <NavLink to="/features" className={linkClass}>Features</NavLink>
                     <NavLink to="/services" className={linkClass}>Services</NavLink>
-                    <NavLink to="/howItWorks" className={linkClass}>How It Works</NavLink>
+                    <NavLink to="/working" className={linkClass}>How It Works</NavLink>
                     <NavLink to="/testimonials" className={linkClass}>Testimonials</NavLink>
                     <NavLink to="/about" className={linkClass}>About</NavLink>
                 </div>

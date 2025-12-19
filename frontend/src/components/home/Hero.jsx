@@ -1,5 +1,5 @@
 import React from "react";
-import HeroImage from "../assets/images/Hero.jpg";
+import HeroImage from "../../assets/images/Hero.jpg";
 import { Calendar } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
