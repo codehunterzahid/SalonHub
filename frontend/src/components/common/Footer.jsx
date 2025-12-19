@@ -7,7 +7,7 @@ const Footer = () => {
   const linkClass = "hover:text-pink-500 transition-colors duration-300";
 
   return (
-    <footer className="bg-gray-900 text-gray-200 py-16 sm:px-4">
+    <footer className="bg-gray-900 text-gray-200 py-16 sm:px-12">
       {/*Footer Top Section */}
       <div className="flex flex-col md:flex-row gap-10">
         <div className="md:w-2/5">
