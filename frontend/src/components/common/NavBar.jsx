@@ -18,7 +18,7 @@ const Navbar = () => {
 
                 <NavLink to="/" className="flex items-center text-2xl gap-2 font-bold bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
                     <img src={Logo} alt="nav-logo" className="w-8 md:w-10 object-contain" />
-                    SaloonHub
+                    SalonHub
                 </NavLink>
 
                 <div className="hidden md:flex gap-8">
@@ -60,7 +60,7 @@ const Navbar = () => {
                     <NavLink to="/features" onClick={() => setOpen(false)} className={linkClass}>Features</NavLink>
                     <NavLink to="/services" onClick={() => setOpen(false)} className={linkClass}>Services</NavLink>
                     <NavLink to="/testimonials" onClick={() => setOpen(false)} className={linkClass}>Testimonials</NavLink>
-                    <NavLink to="/howItWorks" onClick={() => setOpen(false)} className={linkClass}>How It Works</NavLink>
+                    <NavLink to="/working" onClick={() => setOpen(false)} className={linkClass}>How It Works</NavLink>
                     <NavLink to="/about" onClick={() => setOpen(false)} className={linkClass}>About</NavLink>
 
 

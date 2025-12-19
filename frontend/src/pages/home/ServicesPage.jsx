@@ -1,5 +1,5 @@
 import React from 'react'
-import Services from '../../components/home/Services'
+import Services from '../../components/homePageComponents/Services'
 
 const ServicesPage = () => {
   return (

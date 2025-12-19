@@ -1,5 +1,5 @@
 import React from 'react'
-import Features from '../../components/home/Features'
+import Features from '../../components/homePageComponents/Features'
 
 const FeaturesPage = () => {
   return (

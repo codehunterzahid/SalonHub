@@ -31,7 +31,7 @@ const Hero = () => {
           </span>
 
           <h1 className="text-4xl py-2 sm:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-purple-500 to-pink-600">
-            Premium Saloon Bookings Made <br></br> Simple
+            Premium Salon Bookings Made <br></br> Simple
           </h1>
 
           <p className="text-gray-700 text-lg max-w-xl py-1.5">

@@ -1,28 +1,5 @@
 import React from "react";
-
-const steps = [
-  {
-    id: 1,
-    title: "Browse Salons",
-    desc: "Explore salons and services in your area",
-  },
-  {
-    id: 2,
-    title: "Choose Service",
-    desc: "Select your preferred service and time",
-  },
-  {
-    id: 3,
-    title: "Secure Payment",
-    desc: "Pay securely with escrow protection",
-  },
-  {
-    id: 4,
-    title: "Enjoy Service",
-    desc: "Get your service and rate your experience",
-  },
-];
-
+import { steps } from "../../data/Data";
 const Working = () => {
   return (
     <section className="bg-gray-50 py-20">
