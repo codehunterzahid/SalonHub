@@ -50,7 +50,7 @@ const Hero = () => {
             </NavLink>
 
             <NavLink
-              to="/salon-signup"
+              to="signup"
               className="px-6 py-3 rounded-md text-purple-600 font-medium border border-purple-500 hover:bg-purple-50 transition"
             >
               Join as Salon

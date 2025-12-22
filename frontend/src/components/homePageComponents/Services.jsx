@@ -41,7 +41,7 @@ const Services = () => {
 
       <div className="flex justify-center mt-10">
         <NavLink
-          to="/services"
+          to="/signup"
           className="inline-flex items-center gap-2 bg-linear-to-r from-purple-500 to-pink-500 text-white text-md font-medium px-8 py-3 rounded-md"
         >
           Explore All Services

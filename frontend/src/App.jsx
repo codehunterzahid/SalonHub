@@ -6,10 +6,14 @@ import ScrollToTop from './components/homePageComponents/Scroll'
 function App() {
 
   return (
+  
   <BrowserRouter>
     <ScrollToTop />
     <HomeRoute />
   </BrowserRouter>
+  
+  
+  
   )
 }
 
