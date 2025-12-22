@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Mail, Lock, ArrowLeft } from "lucide-react";
 
 const Login = () => {
@@ -35,15 +35,14 @@ const Login = () => {
               <input type="checkbox" className="accent-pink-500" />
               Remember me
             </label>
-            <a
-              href="/forgot-password"
+            <Link
+              to="/forgot-password"
               className="text-orange-500 hover:underline"
             >
               Forgot password?
-            </a>
+            </Link>
           </div>
 
-          {/* Button */}
           <button
             type="submit"
             className="w-full mt-6 py-3 rounded-lg font-semibold text-white
@@ -64,7 +63,7 @@ const Login = () => {
           </p>
         </form>
 
-        {/* Right Side */}
+        {/* Right */}
         <div className="hidden md:flex items-center justify-center p-10 bg-linear-to-r from-purple-500 to-pink-500 text-white">
           <div>
             <h2 className="text-4xl font-bold mb-4">

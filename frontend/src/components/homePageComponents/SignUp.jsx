@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { User, Mail, Phone, Lock, Store, ArrowLeft } from "lucide-react";
 
 const Signup = () => {
@@ -67,13 +67,13 @@ const Signup = () => {
             <input type="checkbox" required />
             <span>
               I agree to the{" "}
-              <a href="/terms" className="text-pink-500 hover:underline">
+              <Link to="/terms" className="text-pink-500 hover:underline">
                 Terms & Conditions
-              </a>{" "}
+              </Link>{" "}
               and{" "}
-              <a href="/privacy" className="text-pink-500 hover:underline">
+              <Link to="/privacy" className="text-pink-500 hover:underline">
                 Privacy Policy
-              </a>
+              </Link>
             </span>
           </div>
 

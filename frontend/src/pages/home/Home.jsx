@@ -3,7 +3,7 @@ import Features from "../../components/homePageComponents/Features";
 import Services from "../../components/homePageComponents/Services";
 import Working from "../../components/homePageComponents/HowItWorks";
 import Testimonials from "../../components/homePageComponents/Testimonials";
-import About from "../../components/homePageComponents/About";
+import About from "../../components/homePageComponents/AboutHero";
 import React from "react";
 
 export const Home = () => {
