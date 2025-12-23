@@ -6,7 +6,9 @@ import { Calendar, Shield, Star,Scissors,
   Brush,
   UserCheck,
   Flower, } from "lucide-react";
-
+import Salon1 from "../assets/images/salon-1.jpg";
+import Salon2 from "../assets/images/salon-2.jpg";
+import Salon3 from "../assets/images/salon-3.jpg";
 /* Features Data */
 export const features = [
   {
@@ -142,5 +144,48 @@ export const testimonials = [
     name: "Emily Wilson",
     role: "Happy Customer",
     text: "I was skeptical at first, but the escrow payment system gave me peace of mind. Got exactly what I wanted and the service was amazing!",
+  },
+];
+
+
+/* User.Salons Data */
+
+export const salonsData = [
+  {
+    id: 1,
+    name: "Glamour Salon & Spa",
+    rating: 4.8,
+    reviews: 234,
+    location: "Downtown, New York",
+    image: Salon1,
+    services: [
+      { id: 1, name: "Haircut & Styling", duration: "45 min", price: 50 },
+      { id: 2, name: "Hair Color", duration: "2 hours", price: 120 },
+      { id: 3, name: "Hair Straight", duration: "1 hour", price: 150 },
+    ],
+  },
+  {
+    id: 2,
+    name: "Elite Beauty Studio",
+    rating: 4.9,
+    reviews: 189,
+    location: "Midtown, New York",
+    image: Salon2,
+    services: [
+      { id: 1, name: "Makeup", duration: "1 hour", price: 70 },
+      { id: 2, name: "Hair Treatment", duration: "1.5 hours", price: 90 },
+    ],
+  },
+  {
+    id: 3,
+    name: "Luxury Spa & Wellness",
+    rating: 4.7,
+    reviews: 156,
+    location: "Upper East Side, New York",
+    image: Salon3,
+    services: [
+      { id: 1, name: "Massage Therapy", duration: "1 hour", price: 100 },
+      { id: 2, name: "Spa Facial", duration: "1.5 hours", price: 130 },
+    ],
   },
 ];
