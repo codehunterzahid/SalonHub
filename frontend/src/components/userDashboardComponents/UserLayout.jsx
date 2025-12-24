@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "./SideBar";
-import SalonPage from "./Salons"; // Or any other page component
+import SalonPage from "./Salons";
+import { Outlet } from "react-router-dom";
 
 const UserLayout = () => {
   const [customer, setCustomer] = useState({
@@ -16,7 +17,7 @@ const UserLayout = () => {
 
       {/* Main Content */}
       <main className="flex-1 p-8 overflow-y-auto">
-        <SalonPage />
+        <Outlet />
       </main>
     </div>
   );

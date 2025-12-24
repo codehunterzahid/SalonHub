@@ -1,15 +1,18 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import UserLayout from '../components/userDashboardComponents/UserLayout'
-import Sidebar from '../components/userDashboardComponents/SideBar'
 import Salons from '../components/userDashboardComponents/Salons'
+import MyBookings from '../components/userDashboardComponents/MyBookings'
+import Profile from '../components/userDashboardComponents/Profile'
 
 const UserRoute = () => {
   return (
     <Routes>
       <Route path="/" element={<UserLayout />}>
-        <Route index element={<Sidebar />} />
+        <Route index element={<Salons />} />
         <Route path="/salons" element={<Salons />} />
+        <Route path="/bookings" element={<MyBookings />} />
+        <Route path="/profile" element={<Profile />} />
       </Route>
     </Routes>
   )

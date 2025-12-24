@@ -6,8 +6,8 @@ import ServicesPage from "../pages/homePages/ServicesPage";
 import WorkingPage from "../pages/homePages/HowItWorksPage";
 import TestimonialsPage from "../pages/homePages/TestimonialsPage";
 import AboutPage from "../pages/homePages/AboutPage";
-import SignUpPage from "../pages/homePages/SignUpPage";
-import LogInPage from "../pages/homePages/LogInPage";
+import SignUpPage from "../pages/homePages/SignupPage";
+import LogInPage from "../pages/homePages/LoginPage";
 import Home from "../pages/homePages/Home";
 
 const HomeRoute = () => {

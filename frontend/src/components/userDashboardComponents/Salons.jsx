@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SalonModal from "./SalonModal";
-import { salonsData } from "../../data/data";
+import SalonModal from "../modals/userDashboardmodals/SalonModal";
+import { salonsData } from "../../data/index";
 
 const Salons = () => {
   const [search, setSearch] = useState("");
