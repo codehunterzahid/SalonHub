@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import About1 from "../assets/images/About-1.jpg";
-import About2 from "../assets/images/About-2.jpg";
-import About3 from "../assets/images/About-3.jpg";
-import About4 from "../assets/images/About-4.jpg";
+import About1 from "../../assets/images/About-1.jpg";
+import About2 from "../../assets/images/About-2.jpg";
+import About3 from "../../assets/images/About-3.jpg";
+import About4 from "../../assets/images/About-4.jpg";
 
 const About = () => {
   return (
@@ -65,7 +65,6 @@ const About = () => {
         </div>
 
         <div className="flex gap-6">
-          {/* Left Column */}
           <div className="flex flex-col gap-6 flex-1">
             <img
               src={About1}
@@ -80,8 +79,7 @@ const About = () => {
             />
           </div>
 
-          {/* Right Column */}
-          <div className="flex flex-col gap-6 flex-1">
+=          <div className="flex flex-col gap-6 flex-1">
             <img
               src={About2}
               alt="Hair styling"

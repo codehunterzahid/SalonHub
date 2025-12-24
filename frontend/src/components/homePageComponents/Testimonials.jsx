@@ -1,26 +1,6 @@
 import React from "react";
 import { Star, Quote } from "lucide-react";
-
-const testimonials = [
-  {
-    id: 1,
-    name: "Sarah Johnson",
-    role: "Regular Customer",
-    text: "SalonHub has completely changed how I book my beauty appointments. The platform is so easy to use and I love the secure payment system!",
-  },
-  {
-    id: 2,
-    name: "Mike Davis",
-    role: "Salon Owner",
-    text: "As a salon owner, this platform has helped me reach more customers and manage bookings efficiently. The 10% commission is totally worth it!",
-  },
-  {
-    id: 3,
-    name: "Emily Wilson",
-    role: "Happy Customer",
-    text: "I was skeptical at first, but the escrow payment system gave me peace of mind. Got exactly what I wanted and the service was amazing!",
-  },
-];
+import { testimonials } from "../../data/Data";
 
 const Testimonials = () => {
   return (

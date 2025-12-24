@@ -7,7 +7,7 @@ const Footer = () => {
   const linkClass = "hover:text-pink-500 transition-colors duration-300";
 
   return (
-    <footer className="bg-gray-900 text-gray-200 md:px-14 py-16">
+    <footer className="bg-gray-900 text-gray-200 py-16 sm:px-12">
       {/*Footer Top Section */}
       <div className="flex flex-col md:flex-row gap-10">
         <div className="md:w-2/5">
@@ -53,8 +53,13 @@ const Footer = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/pricing" className={linkClass}>
-                  Pricing
+                <NavLink to="/working" className={linkClass}>
+                  How It Works
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/testimonials" className={linkClass}>
+                  Testimonials
                 </NavLink>
               </li>
               <li>
