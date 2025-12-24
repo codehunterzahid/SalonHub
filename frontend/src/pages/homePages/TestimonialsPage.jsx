@@ -1,8 +1,8 @@
 import React from "react";
 import { Star, Quote } from "lucide-react";
-import { testimonials } from "../../data/Data";
+import { testimonials } from "../../data/index";
 
-const Testimonials = () => {
+const TestimonialsPage = () => {
   return (
     <section className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4">
@@ -50,4 +50,4 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials;
+export default TestimonialsPage;

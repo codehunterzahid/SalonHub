@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { User, Mail, Phone, Lock, Store, ArrowLeft } from "lucide-react";
 
-const Signup = () => {
+const SignupPage = () => {
   const [role, setRole] = useState("customer");
 
   return (
@@ -113,7 +113,7 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupPage;
 
 /* ---------- Components ---------- */
 

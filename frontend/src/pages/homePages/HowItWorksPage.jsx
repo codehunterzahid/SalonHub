@@ -1,6 +1,6 @@
 import React from "react";
-import { steps } from "../../data/Data";
-const Working = () => {
+import { steps } from "../../data/index";
+const WorkingPage = () => {
   return (
     <section className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto">
@@ -33,4 +33,4 @@ const Working = () => {
   );
 };
 
-export default Working;
+export default WorkingPage;

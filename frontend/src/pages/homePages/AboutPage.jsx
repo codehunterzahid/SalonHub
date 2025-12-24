@@ -1,11 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import About1 from "../../assets/images/About-1.jpg";
-import About2 from "../../assets/images/About-2.jpg";
-import About3 from "../../assets/images/About-3.jpg";
-import About4 from "../../assets/images/About-4.jpg";
+import Salon from "../../assets/images/About-1.jpg";
+import BlowDry from "../../assets/images/About-2.jpg";
+import HairStyle from "../../assets/images/About-3.jpg";
+import MakeUp from "../../assets/images/About-4.jpg";
 
-const About = () => {
+const AboutPage = () => {
   return (
     <section className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
@@ -67,13 +67,13 @@ const About = () => {
         <div className="flex gap-6">
           <div className="flex flex-col gap-6 flex-1">
             <img
-              src={About1}
-              alt="saloon"
+              src={Salon}
+              alt="salon"
               className="rounded-2xl shadow object-cover h-52 w-full"
             />
 
             <img
-              src={About3}
+              src={BlowDry}
               alt="Blow dry"
               className="rounded-2xl shadow object-cover h-64 w-full"
             />
@@ -81,13 +81,13 @@ const About = () => {
 
 =          <div className="flex flex-col gap-6 flex-1">
             <img
-              src={About2}
+              src={HairStyle}
               alt="Hair styling"
               className="rounded-2xl shadow object-cover h-64 w-full"
             />
 
             <img
-              src={About4}
+              src={MakeUp}
               alt="Makeup"
               className="rounded-2xl shadow object-cover h-62 w-full"
             />
@@ -99,4 +99,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutPage;

@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { Mail, Lock, ArrowLeft } from "lucide-react";
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f9f6f2] px-4 pt-6">
       <div className="max-w-5xl w-full bg-white rounded-2xl shadow-lg grid md:grid-cols-2 overflow-hidden">
@@ -81,7 +81,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
 
 /* ---------- Input Component ---------- */
 

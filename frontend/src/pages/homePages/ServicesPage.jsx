@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { services } from "../../data/Data";
+import { services } from "../../data/index";
 
-const Services = () => {
+const ServicesPage = () => {
   return (
     <section className="py-20 bg-gray-50 px-12">
       <div className="text-center mb-12">
@@ -64,4 +64,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default ServicesPage;

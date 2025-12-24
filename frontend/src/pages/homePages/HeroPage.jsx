@@ -3,7 +3,7 @@ import HeroImage from "../../assets/images/Hero.jpg";
 import { Calendar } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
-const Hero = () => {
+const HeroPage = () => {
   return (
     <section className="pt-24 bg-linear-to-r from-purple-50 to-pink-50">
       <div className="max-w-7xl mx-auto px-4 py-16 flex flex-col-reverse md:flex-row items-center md:items-start gap-10">
@@ -71,4 +71,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default HeroPage;

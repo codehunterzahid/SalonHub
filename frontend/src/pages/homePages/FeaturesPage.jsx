@@ -1,7 +1,7 @@
 import React from "react";
-import { features } from "../../data/Data";
+import { features } from "../../data/index";
 
-const WhyChooseSection = () => {
+const FeaturesPage = () => {
   return (
     <section className="py-28 bg-gray-50">
       <div className="max-w-8xl mx-auto px-12">
@@ -44,4 +44,4 @@ const WhyChooseSection = () => {
   );
 };
 
-export default WhyChooseSection;
+export default FeaturesPage;
