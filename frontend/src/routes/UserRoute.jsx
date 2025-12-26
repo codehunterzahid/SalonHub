@@ -4,6 +4,7 @@ import UserLayout from '../components/userDashboardComponents/UserLayout'
 import Salons from '../components/userDashboardComponents/Salons'
 import MyBookings from '../components/userDashboardComponents/MyBookings'
 import Profile from '../components/userDashboardComponents/Profile'
+import Wallet from '../components/userDashboardComponents/Wallet'
 
 const UserRoute = () => {
   return (
@@ -12,6 +13,7 @@ const UserRoute = () => {
         <Route index element={<Salons />} />
         <Route path="/salons" element={<Salons />} />
         <Route path="/bookings" element={<MyBookings />} />
+        <Route path="/wallet" element={<Wallet />} />
         <Route path="/profile" element={<Profile />} />
       </Route>
     </Routes>

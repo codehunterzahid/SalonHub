@@ -2,7 +2,7 @@ import { Calendar, Clock } from "lucide-react";
 
 const MyBookings = () => {
   return (
-    <div className="flex-1 bg-gray min-h-screen p-10">
+    <div className="flex-1 bg-gray p-10">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-800">My Bookings</h1>
         <p className="text-gray-500 mt-1">Manage your appointments</p>
