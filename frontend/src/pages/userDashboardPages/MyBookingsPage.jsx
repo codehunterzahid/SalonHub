@@ -1,6 +1,6 @@
 import { Calendar, Clock } from "lucide-react";
 
-const MyBookings = () => {
+const BookingsPage = () => {
   return (
     <div className="flex-1 bg-gray p-10">
       <div className="mb-8">
@@ -81,4 +81,4 @@ const MyBookings = () => {
   );
 };
 
-export default MyBookings;
+export default BookingsPage;

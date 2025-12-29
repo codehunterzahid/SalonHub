@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Profile = () => {
+const ProfilePage = () => {
   const [profile, setProfile] = useState({
     name: "Zahid Khan",
     email: "customer",
@@ -120,4 +120,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;

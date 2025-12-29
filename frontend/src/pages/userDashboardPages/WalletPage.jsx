@@ -7,9 +7,9 @@ import {
   Plus,
   Clock,
 } from "lucide-react";
-import AddFundsModal from "../modals/userDashboardModals/AddFundsModal";
+import AddFundsModal from "../../components/modals/userDashboardModals/AddFundsModal";
 
-const Wallet = () => {
+const WalletPage = () => {
   const [showHistory, setShowHistory] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [amount, setAmount] = useState("");
@@ -161,4 +161,4 @@ const Wallet = () => {
   );
 };
 
-export default Wallet;
+export default WalletPage;

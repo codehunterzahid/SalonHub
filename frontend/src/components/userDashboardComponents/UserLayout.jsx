@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Sidebar from "./SideBar";
-import SalonPage from "./Salons";
 import { Outlet } from "react-router-dom";
 
 const UserLayout = () => {

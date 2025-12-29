@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import SalonModal from "../modals/userDashboardmodals/SalonModal";
+import SalonModal from "../../components/modals/userDashboardmodals/SalonModal";
 import { salonsData } from "../../data/index";
 
-const Salons = () => {
+const SalonsPage = () => {
   const [search, setSearch] = useState("");
   const [selectedSalon, setSelectedSalon] = useState(null);
 
@@ -55,4 +55,4 @@ const Salons = () => {
   );
 };
 
-export default Salons;
+export default SalonsPage;
