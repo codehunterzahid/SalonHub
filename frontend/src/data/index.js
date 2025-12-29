@@ -5,7 +5,10 @@ import { Calendar, Shield, Star,Scissors,
   User,
   Brush,
   UserCheck,
-  Flower, } from "lucide-react";
+  Flower,
+  DollarSign,
+  TrendingUp,
+  Users,} from "lucide-react";
 import SalonRoom from "../assets/images/salon-1.jpg";
 import SalonChair from "../assets/images/salon-2.jpg";
 import SpaTub from "../assets/images/salon-3.jpg";
@@ -189,3 +192,60 @@ export const salonsData = [
     ],
   },
 ];
+
+/* SalonDashboard Overview Data */
+
+export const stats = [
+  {
+    title: "Total Earnings",
+    value: "$12,500",
+    icon: DollarSign,
+    iconBg: "bg-green-500",
+  },
+  {
+    title: "Pending Payouts",
+    value: "$1,250",
+    icon: TrendingUp,
+    iconBg: "bg-purple-500",
+  },
+  {
+    title: "Total Bookings",
+    value: "145",
+    icon: Calendar,
+    iconBg: "bg-blue-500",
+  },
+  {
+    title: "Upcoming",
+    value: "8",
+    icon: Users,
+    iconBg: "bg-pink-500",
+  },
+];
+
+export const bookings = [
+    {
+      id: 1,
+      name: "Sarah Johnson",
+      service: "Haircut & Styling",
+      date: "2024-12-20",
+      time: "2:00 PM",
+      status: "upcoming",
+    },
+    {
+      id: 2,
+      name: "Mike Davis",
+      service: "Hair Color",
+      date: "2024-12-20",
+      time: "3:30 PM",
+      status: "upcoming",
+    },
+    {
+      id: 3,
+      name: "Emily Wilson",
+      service: "Facial Treatment",
+      date: "2024-12-15",
+      time: "11:00 AM",
+      status: "completed",
+    },
+  ];
+
