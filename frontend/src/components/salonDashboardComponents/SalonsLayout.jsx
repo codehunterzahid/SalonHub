@@ -3,7 +3,7 @@ import Sidebar from "./SalonsSideBar";
 import { Outlet } from "react-router-dom";
 
 const UserLayout = () => {
-  const [customer, setCustomer] = useState({
+  const [salonOwner, setSalonOwner] = useState({
     name: "Ali Raza",
     role: "Salon Owner",
     initials: "AR",
@@ -12,11 +12,10 @@ const UserLayout = () => {
   return (
     <div className="flex min-h-screen bg-gray-100 overflow-hidden">
       {/* Sidebar */}
-      <Sidebar customer={customer} setCustomer={setCustomer} />
+      <Sidebar salonOwner={salonOwner} />
 
-      {/* Main Content Wrapper */}
+      {/* Main Content */}
       <div className="flex-1 flex flex-col">
-        {/* Scrollable Content */}
         <main className="flex-1 overflow-y-auto p-8">
           <Outlet />
         </main>

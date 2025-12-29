@@ -11,7 +11,8 @@ import {
   X,
 } from "lucide-react";
 
-const SalonsSideBar = ({ customer }) => {
+
+const SalonsSideBar = ({ salonOwner }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -61,11 +62,11 @@ const SalonsSideBar = ({ customer }) => {
 
         <div className="mx-6 mb-6 bg-gray-100 p-4 rounded-lg flex items-center">
           <div className="w-12 h-12 rounded-full bg-linear-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold">
-            {customer.initials}
+            {salonOwner.initials}
           </div>
           <div className="ml-3">
-            <h3 className="font-semibold text-black">{customer.name}</h3>
-            <p className="text-sm text-gray-500">{customer.role}</p>
+            <h3 className="font-semibold text-black">{salonOwner.name}</h3>
+            <p className="text-sm text-gray-500">{salonOwner.role}</p>
           </div>
         </div>
 
