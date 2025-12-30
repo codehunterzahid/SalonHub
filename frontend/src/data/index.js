@@ -342,3 +342,32 @@ export const adminSalonsData = [
     address: "Texas, USA",
   },
 ];
+
+/* AdminDashboard transaction Data */
+
+export const adminTransactionsData = [
+    {
+      id: 1,
+      salon: "Glamour Salon & Spa",
+      date: "2024-12-15",
+      type: "COMMISSION",
+      status: "completed",
+      amount: 12,
+    },
+    {
+      id: 2,
+      salon: "Elite Beauty Studio",
+      date: "2024-12-14",
+      type: "COMMISSION",
+      status: "pending",
+      amount: 8,
+    },
+    {
+      id: 3,
+      salon: "Luxury Spa & Wellness",
+      date: "2024-12-13",
+      type: "REFUND",
+      status: "pending",
+      amount: 50,
+    },
+  ]

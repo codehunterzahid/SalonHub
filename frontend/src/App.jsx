@@ -12,7 +12,7 @@ function App() {
   
   <BrowserRouter>
     <ScrollToTop />
-    <SalonsRoute />
+    <AdminRoute />
   </BrowserRouter>
   
   
