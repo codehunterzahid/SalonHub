@@ -1,36 +1,9 @@
 import React, { useState } from "react";
 import { DollarSign, Calendar, Clock } from "lucide-react";
+import { salonBookingsData } from "../../data/index";
 
 const BookingsPage = () => {
-  const [bookings, setBookings] = useState([
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      service: "Haircut & Styling",
-      date: "2024-12-20",
-      time: "2:00 PM",
-      fee: "$50",
-      status: "upcoming",
-    },
-    {
-      id: 2,
-      name: "Mike Davis",
-      service: "Hair Color",
-      date: "2024-12-20",
-      time: "3:30 PM",
-      fee: "$120",
-      status: "upcoming",
-    },
-    {
-      id: 3,
-      name: "Emily Wilson",
-      service: "Facial Treatment",
-      date: "2024-12-15",
-      time: "11:00 AM",
-      fee: "$80",
-      status: "completed",
-    },
-  ]);
+  const [bookings, setBookings] = useState(salonBookingsData);
 
   const markAsCompleted = (id) => {
     setBookings((prev) =>

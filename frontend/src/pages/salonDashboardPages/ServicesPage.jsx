@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { Plus, Clock, SquarePen, Trash2, X, DollarSign } from "lucide-react";
+import { salonServicesData } from "../../data/index";
 import AddServiceModal from "../../components/modals/salonDashboardModals/AddServiceModal";
 import EditServiceModal from "../../components/modals/salonDashboardModals/EditServiceModal";
 
 const Services = () => {
-  const [services, setServices] = useState([
-    { id: 1, name: "Haircut & Styling", duration: "45 min", price: 50 },
-    { id: 2, name: "Hair Color", duration: "2 hours", price: 120 },
-    { id: 3, name: "Manicure & Pedicure", duration: "1 hour", price: 60 },
-    { id: 4, name: "Facial Treatment", duration: "1 hour", price: 80 },
-  ]);
+  const [services, setServices] = useState(salonServicesData);
 
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);

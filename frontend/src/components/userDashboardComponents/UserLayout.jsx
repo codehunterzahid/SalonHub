@@ -12,7 +12,7 @@ const UserLayout = () => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <Sidebar customer={customer} setCustomer={setCustomer} />
+      <Sidebar customer={customer} />
 
       {/* Main Content */}
       <main className="flex-1 p-8 overflow-y-auto">

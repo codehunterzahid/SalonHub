@@ -1,4 +1,8 @@
-import { Calendar, Shield, Star,Scissors,
+import {
+  Calendar,
+  Shield,
+  Star,
+  Scissors,
   Palette,
   Paintbrush,
   Sparkles,
@@ -8,7 +12,8 @@ import { Calendar, Shield, Star,Scissors,
   Flower,
   DollarSign,
   TrendingUp,
-  Users,} from "lucide-react";
+  Users,
+} from "lucide-react";
 import SalonRoom from "../assets/images/salon-1.jpg";
 import SalonChair from "../assets/images/salon-2.jpg";
 import SpaTub from "../assets/images/salon-3.jpg";
@@ -101,7 +106,6 @@ export const services = [
   },
 ];
 
-
 /* How It Works Data */
 
 export const steps = [
@@ -149,7 +153,6 @@ export const testimonials = [
     text: "I was skeptical at first, but the escrow payment system gave me peace of mind. Got exactly what I wanted and the service was amazing!",
   },
 ];
-
 
 /* User.Salons Data */
 
@@ -223,29 +226,119 @@ export const stats = [
 ];
 
 export const bookings = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      service: "Haircut & Styling",
-      date: "2024-12-20",
-      time: "2:00 PM",
-      status: "upcoming",
-    },
-    {
-      id: 2,
-      name: "Mike Davis",
-      service: "Hair Color",
-      date: "2024-12-20",
-      time: "3:30 PM",
-      status: "upcoming",
-    },
-    {
-      id: 3,
-      name: "Emily Wilson",
-      service: "Facial Treatment",
-      date: "2024-12-15",
-      time: "11:00 AM",
-      status: "completed",
-    },
-  ];
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    service: "Haircut & Styling",
+    date: "2024-12-20",
+    time: "2:00 PM",
+    status: "upcoming",
+  },
+  {
+    id: 2,
+    name: "Mike Davis",
+    service: "Hair Color",
+    date: "2024-12-20",
+    time: "3:30 PM",
+    status: "upcoming",
+  },
+  {
+    id: 3,
+    name: "Emily Wilson",
+    service: "Facial Treatment",
+    date: "2024-12-15",
+    time: "11:00 AM",
+    status: "completed",
+  },
+];
 
+/* SalonDashboard Booking Data */
+
+export const salonBookingsData = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    service: "Haircut & Styling",
+    date: "2024-12-20",
+    time: "2:00 PM",
+    fee: "$50",
+    status: "upcoming",
+  },
+  {
+    id: 2,
+    name: "Mike Davis",
+    service: "Hair Color",
+    date: "2024-12-20",
+    time: "3:30 PM",
+    fee: "$120",
+    status: "upcoming",
+  },
+  {
+    id: 3,
+    name: "Emily Wilson",
+    service: "Facial Treatment",
+    date: "2024-12-15",
+    time: "11:00 AM",
+    fee: "$80",
+    status: "completed",
+  },
+];
+
+/* SalonDashboard Services Data */
+
+export const salonServicesData = [
+  { id: 1, name: "Haircut & Styling", duration: "45 min", price: 50 },
+  { id: 2, name: "Hair Color", duration: "2 hours", price: 120 },
+  { id: 3, name: "Manicure & Pedicure", duration: "1 hour", price: 60 },
+  { id: 4, name: "Facial Treatment", duration: "1 hour", price: 80 },
+];
+
+/* SalonDashboard Services Data */
+
+export const salonSettingsData = [
+  {
+    salonName: "Glamour Salon & Spa",
+    ownerName: "Demo Salon Owner",
+    email: "salon@demo.com",
+    location: "Downtown, New York",
+    bankAccount: "",
+  },
+];
+
+/* AdminDashboard Salons Data */
+
+export const adminSalonsData = [
+  {
+    id: 1,
+    name: "Glamour Salon & Spa",
+    owner: "Jane Smith",
+    status: "active",
+    earnings: 12500,
+    bookings: 145,
+    email: "glamour@salonhub.com",
+    phone: "+1 234 567 890",
+    address: "New York, USA",
+  },
+  {
+    id: 2,
+    name: "Elite Beauty Studio",
+    owner: "Mike Johnson",
+    status: "active",
+    earnings: 8900,
+    bookings: 98,
+    email: "elite@salonhub.com",
+    phone: "+1 987 654 321",
+    address: "California, USA",
+  },
+  {
+    id: 3,
+    name: "Luxury Spa & Wellness",
+    owner: "Sarah Davis",
+    status: "pending",
+    earnings: 0,
+    bookings: 0,
+    email: "luxury@salonhub.com",
+    phone: "+1 555 222 111",
+    address: "Texas, USA",
+  },
+];

@@ -10,7 +10,7 @@ const UserLayout = () => {
   });
 
   return (
-    <div className="flex min-h-screen bg-gray-100 overflow-hidden">
+    <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
       <Sidebar salonOwner={salonOwner} />
 
