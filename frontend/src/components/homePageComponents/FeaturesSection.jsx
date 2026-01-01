@@ -3,7 +3,7 @@ import { features } from "../../data/index";
 
 const FeaturesPage = () => {
   return (
-    <section className="py-28 bg-gray-50">
+    <section id="features" className="py-28 bg-gray-50">
       <div className="max-w-8xl mx-auto px-12">
         <h2 className="text-4xl text-black text-center font-bold mb-4">
           Why Choose SalonHub?

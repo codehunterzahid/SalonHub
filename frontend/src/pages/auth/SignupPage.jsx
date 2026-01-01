@@ -6,9 +6,9 @@ const SignupPage = () => {
   const [role, setRole] = useState("customer");
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 pt-22">
+    <div className="flex items-center justify-center bg-gray-100 p-4 overflow-hidden">
       <div className="max-w-5xl w-full bg-white rounded-2xl shadow-lg grid md:grid-cols-2 overflow-hidden">
-        <form className="px-10 py-6">
+        <form className="px-10 py-4">
           {/* Back */}
           <NavLink
             to="/"

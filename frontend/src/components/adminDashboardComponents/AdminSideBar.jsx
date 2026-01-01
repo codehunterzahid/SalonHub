@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import {
   Calendar,
   Wallet,
@@ -14,7 +15,7 @@ import {
 } from "lucide-react";
 
 const UserSideBar = ({ admin }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>

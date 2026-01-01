@@ -2,7 +2,7 @@ import React from "react";
 import { steps } from "../../data/index";
 const WorkingPage = () => {
   return (
-    <section className="bg-gray-50 py-20">
+    <section id="working" className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900">How It Works</h2>

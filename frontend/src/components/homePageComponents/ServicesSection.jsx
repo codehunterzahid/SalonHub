@@ -4,7 +4,7 @@ import { services } from "../../data/index";
 
 const ServicesPage = () => {
   return (
-    <section className="py-20 bg-gray-50 px-12">
+    <section id="services" className="py-20 bg-gray-50 px-12">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-black">Popular Services</h2>
         <p className="text-gray-500 mt-2">

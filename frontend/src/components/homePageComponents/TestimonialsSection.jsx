@@ -4,7 +4,7 @@ import { testimonials } from "../../data/index";
 
 const TestimonialsPage = () => {
   return (
-    <section className="bg-gray-50 py-20">
+    <section id="testimonials" className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900">

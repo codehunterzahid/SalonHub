@@ -1,21 +1,25 @@
-import HeroPage from "./HeroPage";
-import FeaturesPage from "./FeaturesPage";
-import ServicesPage from "./ServicesPage";
-import WorkingPage from "./HowItWorksPage";
-import TestimonialsPage from "./TestimonialsPage";
-import AboutPage from "./AboutPage";
-
-import React from "react";
+import Navbar from "../../components/homePageComponents/NavBar";
+import Hero from "../../components/homePageComponents/HeroSection";
+import Features from "../../components/homePageComponents/FeaturesSection";
+import Services from "../../components/homePageComponents/ServicesSection";
+import Working from "../../components/homePageComponents/HowItWorksSection";
+import Testimonials from "../../components/homePageComponents/TestimonialsSection";
+import About from "../../components/homePageComponents/AboutSection";
+import CTA from "../../components/homePageComponents/CallToAction";
+import Footer from "../../components/homePageComponents/Footer";
 
 export const Home = () => {
   return (
     <>
-      <HeroPage />
-      <FeaturesPage />
-      <ServicesPage />
-      <WorkingPage />
-      <TestimonialsPage />
-      <AboutPage />
+      <Navbar />
+      <Hero />
+      <Features />
+      <Services />
+      <Working />
+      <Testimonials />
+      <About />
+      <CTA />
+      <Footer />
     </>
   );
 };
