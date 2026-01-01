@@ -1,10 +1,11 @@
 import { BrowserRouter } from 'react-router-dom'
 import './App.css'
+import AppRoutes from './routes/Routes'
 import HomeRoute from './routes/HomeRoute'
 import UserRoute from './routes/UserRoute'
 import SalonsRoute from './routes/SalonsRoute'
 import AdminRoute from './routes/AdminRoute'
-import ScrollToTop from './components/homePageComponents/Scroll'
+import ScrollToTop from './utils/ScrollToTop'
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
   
   <BrowserRouter>
     <ScrollToTop />
-    <AdminRoute />
+    <AppRoutes />
   </BrowserRouter>
   
   
