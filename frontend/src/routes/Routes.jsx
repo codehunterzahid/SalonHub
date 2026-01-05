@@ -3,7 +3,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 /* ===== Public Pages ===== */
-import Home from "../pages/homePages/Home";
+import Home from "../pages/homePage/Home";
 import SignupPage from "../pages/auth/SignupPage";
 import LoginPage from "../pages/auth/LoginPage";
 

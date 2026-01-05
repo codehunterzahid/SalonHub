@@ -8,15 +8,17 @@ import {
   Sparkles,
   User,
   Brush,
+  Search,
+  Wallet,
   UserCheck,
   Flower,
   DollarSign,
   TrendingUp,
   Users,
 } from "lucide-react";
-import SalonRoom from "../assets/images/salon-1.jpg";
-import SalonChair from "../assets/images/salon-2.jpg";
-import SpaTub from "../assets/images/salon-3.jpg";
+import SalonRoom from "../assets/images/salon-room.jpg";
+import SalonChair from "../assets/images/salon-chair.jpg";
+import SpaTub from "../assets/images/spa-tub.jpg";
 /* Features Data */
 export const features = [
   {

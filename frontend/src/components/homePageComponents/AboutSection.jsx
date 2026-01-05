@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import {ChevronRight} from "lucide-react"
-import Salon from "../../assets/images/About-1.jpg";
-import BlowDry from "../../assets/images/About-2.jpg";
-import HairStyle from "../../assets/images/About-3.jpg";
-import MakeUp from "../../assets/images/About-4.jpg";
+import Salon from "../../assets/images/salon.jpg";
+import BlowDry from "../../assets/images/blow-dry.jpg";
+import HairStyle from "../../assets/images/hair-style.jpg";
+import MakeUp from "../../assets/images/make-up.jpg";
 
 const AboutPage = () => {
   return (

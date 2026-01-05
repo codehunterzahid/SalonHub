@@ -13,7 +13,7 @@ function App() {
   
   <BrowserRouter>
     <ScrollToTop />
-    <AppRoutes />
+    <HomeRoute />
   </BrowserRouter>
   
   
