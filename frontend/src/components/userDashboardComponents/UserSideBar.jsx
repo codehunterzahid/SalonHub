@@ -3,11 +3,12 @@ import { Calendar, Wallet, LogOut, Scissors, User, Search } from "lucide-react";
 import SidebarLayout from "../common/SidebarLayout";
 const UsersSideBar = ({ customer }) => {
   const menuLinks = [
-    { label: "Browse Salons", route: "/salons", icon: <Search /> },
-    { label: "My Bookings", route: "/bookings", icon: <Calendar /> },
-    { label: "Wallet", route: "/wallet", icon: <Wallet /> },
-    { label: "Profile", route: "/profile", icon: <User /> },
-  ];
+  { label: "Browse Salons", route: "/user/salons" },
+  { label: "My Bookings", route: "/user/bookings" },
+  { label: "Wallet", route: "/user/wallet" },
+  { label: "Profile", route: "/user/profile" },
+];
+
 
   return (
     <SidebarLayout

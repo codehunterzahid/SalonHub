@@ -41,7 +41,7 @@ const AppRoutes = () => {
       <Route path="/login" element={<LoginPage />} />
 
       {/* ================= USER DASHBOARD ================= */}
-      <Route element={<ProtectedRoute allowedRole="user" />}>
+      <Route element={<ProtectedRoute allowedRole="customer" />}>
         <Route path="/user" element={<UserLayout />}>
           <Route index element={<UserSalonsPage />} />
           <Route path="salons" element={<UserSalonsPage />} />
@@ -52,7 +52,7 @@ const AppRoutes = () => {
       </Route>
 
       {/* ================= SALON DASHBOARD ================= */}
-      <Route element={<ProtectedRoute allowedRole="salon" />}>
+      <Route element={<ProtectedRoute allowedRole="salonOwner" />}>
         <Route path="/salon" element={<SalonsLayout />}>
           <Route index element={<SalonOverviewPage />} />
           <Route path="overview" element={<SalonOverviewPage />} />

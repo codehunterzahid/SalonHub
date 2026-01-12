@@ -3,13 +3,14 @@ import { Calendar, Wallet, Scissors, Settings, House, LogOut } from "lucide-reac
 import SidebarLayout from "../common/SidebarLayout";
 
 const SalonsSideBar = ({ salonOwner }) => {
-  const menuLinks = [
-    { label: "Overview", route: "/overview", icon: <House /> },
-    { label: "Bookings", route: "/bookings", icon: <Calendar /> },
-    { label: "Services", route: "/services", icon: <Scissors /> },
-    { label: "Wallet", route: "/wallet", icon: <Wallet /> },
-    { label: "Settings", route: "/settings", icon: <Settings /> },
-  ];
+ const menuLinks = [
+  { label: "Overview", route: "/salon/overview" },
+  { label: "Bookings", route: "/salon/bookings" },
+  { label: "Services", route: "/salon/services" },
+  { label: "Wallet", route: "/salon/wallet" },
+  { label: "Settings", route: "/salon/settings" },
+];
+
 
   return (
     <SidebarLayout

@@ -2,14 +2,15 @@ import React from "react";
 import { Calendar, Wallet, Settings, House, LogOut, Building2, ChartNoAxesCombined } from "lucide-react";
 import SidebarLayout from "../common/SidebarLayout";
 
-const AdminSideBar = ({ admin }) => {
+const AdminSideBar = ({ admin }) => {  
   const menuLinks = [
-    { label: "Overview", route: "/overview", icon: <House /> },
-    { label: "Salons", route: "/salons", icon: <Building2 /> },
-    { label: "Transactions", route: "/transactions", icon: <ChartNoAxesCombined /> },
-    { label: "Wallet", route: "/wallet", icon: <Wallet /> },
-    { label: "Settings", route: "/settings", icon: <Settings /> },
-  ];
+  { label: "Overview", route: "/admin/overview" },
+  { label: "Salons", route: "/admin/salons" },
+  { label: "Transactions", route: "/admin/transactions" },
+  { label: "Wallet", route: "/admin/wallet" },
+  { label: "Settings", route: "/admin/settings" },
+];
+
 
   return (
     <SidebarLayout

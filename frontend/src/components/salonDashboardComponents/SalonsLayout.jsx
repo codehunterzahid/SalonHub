@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "./SalonsSideBar";
 import { Outlet } from "react-router-dom";
 
-const UserLayout = () => {
+const SalonsLayout = () => {
   const [salonOwner, setSalonOwner] = useState({
     name: "Ali Raza",
     role: "Salon Owner",
@@ -24,4 +24,4 @@ const UserLayout = () => {
   );
 };
 
-export default UserLayout;
+export default SalonsLayout;

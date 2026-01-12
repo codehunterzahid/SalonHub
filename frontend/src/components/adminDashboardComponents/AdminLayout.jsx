@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "./AdminSideBar";
 import { Outlet } from "react-router-dom";
 
-const UserLayout = () => {
+const AdminLayout = () => {
   const [admin, setAdmin] = useState({
     name: "Zahid Khan",
     role: "Customer",
@@ -22,4 +22,4 @@ const UserLayout = () => {
   );
 };
 
-export default UserLayout;
+export default AdminLayout;
