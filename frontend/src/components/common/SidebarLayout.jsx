@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { X, Menu } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext"; 
 
 const SidebarLayout = ({ user, title, menuLinks }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useAuth(); 
 
   return (
     <>
@@ -61,7 +63,7 @@ const SidebarLayout = ({ user, title, menuLinks }) => {
           </div>
         </div>
 
-        {/* links */}
+        {/* Links */}
         <nav className="flex-1 px-6">
           {menuLinks.map((link) => (
             <NavLink
@@ -82,12 +84,12 @@ const SidebarLayout = ({ user, title, menuLinks }) => {
 
         {/* Logout */}
         <div className="p-4">
-          <NavLink
-            to="/"
-            className="flex items-center gap-2 text-red-500 px-4 py-3 rounded-lg hover:bg-red-50"
+          <button
+            onClick={logout} 
+            className="w-full flex items-center gap-2 text-red-500 px-4 py-3 rounded-lg cursor-pointer hover:bg-red-50"
           >
             {user.logoutIcon} Logout
-          </NavLink>
+          </button>
         </div>
       </aside>
     </>

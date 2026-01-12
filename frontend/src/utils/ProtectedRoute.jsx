@@ -1,12 +1,15 @@
+import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const ProtectedRoute = ({ allowedRole }) => {
-  const token = localStorage.getItem("token");
-  const role = localStorage.getItem("role");
+  const { user, token, loading } = useAuth();
+
+  if (loading) return null; 
 
   if (!token) return <Navigate to="/login" replace />;
 
-  if (allowedRole && role !== allowedRole) {
+  if (allowedRole && user?.role !== allowedRole) {
     return <Navigate to="/login" replace />;
   }
 
@@ -14,5 +17,3 @@ const ProtectedRoute = ({ allowedRole }) => {
 };
 
 export default ProtectedRoute;
-
-

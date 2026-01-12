@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Mail, Lock, ArrowLeft } from "lucide-react";
 import api from "../../api/axios";
+import { useAuth } from "../../context/AuthContext";
 
 const LoginPage = () => {
-  const navigate = useNavigate();
-
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,12 +17,11 @@ const LoginPage = () => {
     try {
       const res = await api.post("/auth/login", { email, password });
 
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", res.data.user.role);
+      if (!res.data.user || !res.data.token) throw new Error("Invalid login response");
 
-      navigate(res.data.redirectedTo);
+      login(res.data.user, res.data.token); // Save user & token in context + localStorage
     } catch (error) {
-      alert(error.response?.data?.message || "Login failed");
+      alert(error.response?.data?.message || error.message || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -31,21 +30,31 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f9f6f2] px-4 pt-6">
       <div className="max-w-5xl w-full bg-white rounded-2xl shadow-lg grid md:grid-cols-2 overflow-hidden">
-
         <form className="p-10" onSubmit={submitHandler}>
           <NavLink to="/" className="flex items-center gap-2 text-sm text-orange-500 mb-6 w-fit">
-            <ArrowLeft size={16} />
-            Back to Home
+            <ArrowLeft size={16} /> Back to Home
           </NavLink>
 
           <h2 className="text-3xl text-black font-bold mb-2">Welcome back</h2>
-          <p className="text-gray-500 mb-8">
-            Login to continue using SalonHub
-          </p>
+          <p className="text-gray-500 mb-8">Login to continue using SalonHub</p>
 
           <div className="space-y-4">
-            <Input icon={<Mail />} type="email" placeholder="Email Address" required value={email} onChange={(e) => setEmail(e.target.value)} />
-            <Input icon={<Lock />} type="password" placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+            <Input
+              icon={<Mail />}
+              type="email"
+              placeholder="Email Address"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              icon={<Lock />}
+              type="password"
+              placeholder="Password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
 
           <div className="flex justify-between items-center mt-4 text-sm">
@@ -69,9 +78,7 @@ const LoginPage = () => {
 
           <p className="text-center text-sm mt-6 text-gray-600">
             Don’t have an account?{" "}
-            <NavLink to="/signup" className="text-pink-500 font-semibold hover:underline">
-              Sign up
-            </NavLink>
+            <NavLink to="/signup" className="text-pink-500 font-semibold hover:underline">Sign up</NavLink>
           </p>
         </form>
 
@@ -79,20 +86,16 @@ const LoginPage = () => {
           <div>
             <h2 className="text-4xl font-bold mb-4">Welcome back!</h2>
             <p className="text-lg opacity-90">
-              Login to manage your salon appointments, track bookings,
-              and grow your business with SalonHub.
+              Login to manage your salon appointments, track bookings, and grow your business with SalonHub.
             </p>
           </div>
         </div>
-
       </div>
     </div>
   );
 };
 
 export default LoginPage;
-
-/* ---------- Input ---------- */
 
 const Input = ({ icon, ...props }) => (
   <div className="flex items-center gap-3 px-4 py-3 rounded-lg border

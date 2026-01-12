@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import Sidebar from "./AdminSideBar";
 import { Outlet } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const AdminLayout = () => {
-  const [admin, setAdmin] = useState({
-    name: "Zahid Khan",
-    role: "Customer",
-    initials: "ZK",
-  });
+  const { user } = useAuth();
+
+  const initials = user
+    ? user.initials || user.name.split(" ").map(n => n[0]).join("")
+    : "";
 
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <Sidebar admin={admin} />
+      {user && <Sidebar admin={{ ...user, initials }} />}
 
       {/* Main Content */}
       <main className="flex-1 p-8 overflow-y-auto">
