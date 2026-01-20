@@ -317,6 +317,7 @@ export const adminSalonsData = [
     status: "active",
     earnings: 12500,
     bookings: 145,
+    bankAccount: "123456789",
     email: "glamour@salonhub.com",
     phone: "+1 234 567 890",
     address: "New York, USA",
@@ -328,6 +329,7 @@ export const adminSalonsData = [
     status: "active",
     earnings: 8900,
     bookings: 98,
+    bankAccount: "1234567239",
     email: "elite@salonhub.com",
     phone: "+1 987 654 321",
     address: "California, USA",
@@ -339,6 +341,7 @@ export const adminSalonsData = [
     status: "pending",
     earnings: 0,
     bookings: 0,
+    bankAccount: "1234567239",
     email: "luxury@salonhub.com",
     phone: "+1 555 222 111",
     address: "Texas, USA",
@@ -348,28 +351,28 @@ export const adminSalonsData = [
 /* AdminDashboard transaction Data */
 
 export const adminTransactionsData = [
-    {
-      id: 1,
-      salon: "Glamour Salon & Spa",
-      date: "2024-12-15",
-      type: "COMMISSION",
-      status: "completed",
-      amount: 12,
-    },
-    {
-      id: 2,
-      salon: "Elite Beauty Studio",
-      date: "2024-12-14",
-      type: "COMMISSION",
-      status: "pending",
-      amount: 8,
-    },
-    {
-      id: 3,
-      salon: "Luxury Spa & Wellness",
-      date: "2024-12-13",
-      type: "REFUND",
-      status: "pending",
-      amount: 50,
-    },
-  ]
+  {
+    id: 1,
+    salon: "Glamour Salon & Spa",
+    date: "2024-12-15",
+    type: "COMMISSION",
+    status: "completed",
+    amount: 12,
+  },
+  {
+    id: 2,
+    salon: "Elite Beauty Studio",
+    date: "2024-12-14",
+    type: "COMMISSION",
+    status: "pending",
+    amount: 8,
+  },
+  {
+    id: 3,
+    salon: "Luxury Spa & Wellness",
+    date: "2024-12-13",
+    type: "REFUND",
+    status: "pending",
+    amount: 50,
+  },
+];

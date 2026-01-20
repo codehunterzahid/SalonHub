@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar, Wallet, Settings, House, LogOut, Building2, ChartNoAxesCombined } from "lucide-react";
+import { Calendar, Wallet, Settings, House, LogOut, Building2, ChartNoAxesCombined, Scissors } from "lucide-react";
 import SidebarLayout from "../common/SidebarLayout";
 
 const AdminSideBar = ({ admin }) => {  
@@ -14,7 +14,7 @@ const AdminSideBar = ({ admin }) => {
 
   return (
     <SidebarLayout
-      user={{ ...admin, logoIcon: <Building2 />, logoutIcon: <LogOut /> }}
+      user={{ ...admin, logoIcon: <Scissors />, logoutIcon: <LogOut /> }}
       title="SalonHub"
       menuLinks={menuLinks}
     />

@@ -7,6 +7,7 @@ const connectDB = require("./src/config/db");
 const authRoutes = require("./src/routes/authRoutes");
 const serviceRoutes = require("./src/routes/serviceRoutes");
 const salonRoutes = require("./src/routes/salonRoutes");
+const profileRoutes = require("./src/routes/profileRoutes");
 
 dotenv.config();
 connectDB();
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/salon", salonRoutes);
+app.use("/api/profile", profileRoutes);
 
 
 /* BASE ROUTE */

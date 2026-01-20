@@ -45,6 +45,11 @@ const SalonDetailsModal = ({ salon, onClose, onRemove, onToggleStatus }) => {
             <span className="font-medium">Address:</span>
             <span>{salon.address}</span>
           </div>
+          
+          <div className="flex justify-between">
+            <span className="font-medium">Bank Account:</span>
+            <span>{salon.bankAccount}</span>
+          </div>
 
           <div className="flex justify-between items-center">
             <span className="font-medium">Status:</span>
