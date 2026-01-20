@@ -1,24 +1,68 @@
-import React, { useState } from "react";
-import { salonSettingsData } from "../../data/index";
+import React, { useEffect, useState } from "react";
+import api from "../../api/axios"; // your axios instance
 
 const SalonSettingsPage = () => {
-  const [formData, setFormData] = useState(salonSettingsData);
-
+  const [formData, setFormData] = useState({
+    salonName: "",
+    name: "",
+    email: "",
+    location: "",
+    bankAccount: "",
+  });
   const [saved, setSaved] = useState(false);
+  const [loading, setLoading] = useState(true); // optional loading state
+
+  // Fetch salon settings on mount
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const res = await api.get("/salon"); // GET /api/salon inside axios baseURL
+        const data = res.data;
+        setFormData({
+          salonName: data.salonName || "",
+          name: data.name || "",
+          email: data.email || "",
+          location: data.location || "",
+          bankAccount: data.bankAccount || "",
+        });
+      } catch (err) {
+        console.error(err);
+        alert(err.response?.data?.message || "Failed to fetch settings");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSettings();
+  }, []);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
     setSaved(false);
   };
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
-    console.log("Saved Data:", formData);
-    setSaved(true);
+    try {
+      const res = await api.put("/salon", formData); // PUT /api/salon
+      const data = res.data;
+
+      setFormData({
+        salonName: data.salonName || "",
+        name: data.name || "",
+        email: data.email || "",
+        location: data.location || "",
+        bankAccount: data.bankAccount || "",
+      });
+
+      setSaved(true);
+    } catch (err) {
+      console.error(err);
+      alert(err.response?.data?.message || "Failed to save settings");
+    }
   };
+
+  if (loading) return <p className="text-center mt-10">Loading...</p>;
 
   return (
     <div className="bg-gray px-22 py-2">
@@ -29,6 +73,7 @@ const SalonSettingsPage = () => {
 
       <div className="bg-white rounded-xl shadow-sm max-w-4xl p-6">
         <form onSubmit={handleSave} className="space-y-4">
+          {/* Salon Name */}
           <div className="p-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Salon Name
@@ -42,19 +87,21 @@ const SalonSettingsPage = () => {
             />
           </div>
 
+          {/* Owner Name */}
           <div className="p-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Owner Name
             </label>
             <input
               type="text"
-              name="ownerName"
-              value={formData.ownerName}
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg px-3 py-3 text-black focus:outline-none focus:ring-2 focus:ring-purple-300"
             />
           </div>
 
+          {/* Email */}
           <div className="p-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Email
@@ -63,11 +110,12 @@ const SalonSettingsPage = () => {
               type="email"
               name="email"
               value={formData.email}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg px-3 py-3 text-black focus:outline-none focus:ring-2 focus:ring-purple-300"
+              disabled
+              className="w-full border border-gray-300 rounded-lg px-3 py-3 bg-gray-100 text-black"
             />
           </div>
 
+          {/* Location */}
           <div className="p-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Location
@@ -81,6 +129,7 @@ const SalonSettingsPage = () => {
             />
           </div>
 
+          {/* Bank Account */}
           <div className="p-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Bank Account (for withdrawals)
@@ -95,6 +144,7 @@ const SalonSettingsPage = () => {
             />
           </div>
 
+          {/* Save Button */}
           <div className="p-2 flex items-center gap-4">
             <button
               type="submit"

@@ -50,6 +50,18 @@ const userSchema = new mongoose.Schema(
       trim: true,
       maxlength: [50, "Salon Name must be less than 50 characters"],
     },
+    
+    name: {
+    type: String,
+    },
+    
+    location: {
+      type: String,
+    },
+    
+    bankAccount: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

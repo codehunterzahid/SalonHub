@@ -8,20 +8,24 @@ const AddServiceModal = ({ onClose, onSave }) => {
     price: "",
   });
 
+  const handleSubmit = () => {
+    if (!service.name || !service.duration || !service.price)
+      return alert("All fields are required");
+    onSave(service);
+  };
+
   return (
     <Modal onClose={onClose}>
-      <h2 className="text-lg font-semibold text-black mb-4">
-        Add Service
-      </h2>
+      <h2 className="text-lg font-semibold text-black mb-4">Add Service</h2>
 
-    <label className="text-gray-700 font-semibold text-sm">Service Name</label>
+      <label className="text-gray-700 font-semibold text-sm">
+        Service Name
+      </label>
       <input
         className="w-full outline outline-gray-400 text-black rounded-lg px-4 py-3 mb-3 mt-2"
         placeholder="e.g: Hair cut"
         value={service.name}
-        onChange={(e) =>
-          setService({ ...service, name: e.target.value })
-        }
+        onChange={(e) => setService({ ...service, name: e.target.value })}
       />
 
       <label className="text-gray-700 font-semibold text-sm">Duration</label>
@@ -29,9 +33,7 @@ const AddServiceModal = ({ onClose, onSave }) => {
         className="w-full outline outline-gray-400 text-black rounded-lg px-4 py-3 mb-3 mt-2"
         placeholder="e.g: 30 min"
         value={service.duration}
-        onChange={(e) =>
-          setService({ ...service, duration: e.target.value })
-        }
+        onChange={(e) => setService({ ...service, duration: e.target.value })}
       />
 
       <label className="text-gray-700 font-semibold text-sm">Price ($)</label>
@@ -40,17 +42,18 @@ const AddServiceModal = ({ onClose, onSave }) => {
         className="w-full outline outline-gray-400 text-black rounded-lg px-4 py-3 mb-4 mt-2"
         placeholder="60"
         value={service.price}
-        onChange={(e) =>
-          setService({ ...service, price: e.target.value })
-        }
+        onChange={(e) => setService({ ...service, price: e.target.value })}
       />
 
       <div className="flex justify-end gap-3">
-        <button onClick={onClose} className="outline outline-gray-500 text-black px-4 py-2 rounded-lg">
+        <button
+          onClick={onClose}
+          className="outline outline-gray-500 text-black px-4 py-2 rounded-lg"
+        >
           Cancel
         </button>
         <button
-          onClick={() => onSave(service)}
+          onClick={handleSubmit}
           className="bg-purple-600 text-white px-4 py-2 rounded-lg"
         >
           Save
