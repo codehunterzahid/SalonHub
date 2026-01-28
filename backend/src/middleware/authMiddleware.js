@@ -40,6 +40,17 @@ exports.protect = async (req, res, next) => {
   }
 };
 
+exports.admin = (req, res, next) => {
+  if (req.user && req.user.role === "admin") {
+    next();
+  } else {
+    res.status(403);
+    throw new Error("Admin only");
+  }
+};
+
+
+
 exports.authorize = (...roles) => {
   return (req, res, next) => {
     if (!req.user || !roles.includes(req.user.role)) {

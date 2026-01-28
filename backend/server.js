@@ -8,6 +8,9 @@ const authRoutes = require("./src/routes/authRoutes");
 const serviceRoutes = require("./src/routes/serviceRoutes");
 const salonRoutes = require("./src/routes/salonRoutes");
 const profileRoutes = require("./src/routes/profileRoutes");
+const bookingRoutes = require("./src/routes/bookingRoutes");
+const adminRoutes = require("./src/routes/adminRoutes");
+
 
 dotenv.config();
 connectDB();
@@ -23,7 +26,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/salon", salonRoutes);
 app.use("/api/profile", profileRoutes);
-
+app.use("/api/salons", salonRoutes);
+app.use("/api/bookings", bookingRoutes);
+app.use("/api/admin", adminRoutes);
 
 /* BASE ROUTE */
 app.get("/", (req, res) => {

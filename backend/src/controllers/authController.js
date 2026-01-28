@@ -64,18 +64,7 @@ exports.login = async (req, res) => {
           : "/admin",
     });
 
-    /*
-    res.json({
-      token,
-      role: user.role,
-      redirectedTo:
-        user.role === "customer"
-          ? "/user"
-          : user.role === "salonOwner"
-          ? "/salon"
-          : "/admin",
-    });
-*/
+    
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error.message });

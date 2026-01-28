@@ -1,14 +1,30 @@
-import React, { useState } from "react";
-import SalonModal from "../../components/modals/userDashboardmodals/SalonModal";
-import { salonsData } from "../../data/index";
+import React, { useState, useEffect } from "react";
+import SalonModal from "../../components/modals/userDashboardModals/SalonModal";
+import api from "../../api/axios";
 
 const SalonsPage = () => {
   const [search, setSearch] = useState("");
+  const [salons, setSalons] = useState([]);
   const [selectedSalon, setSelectedSalon] = useState(null);
 
-  const filteredSalons = salonsData.filter((salon) =>
+  useEffect(() => {
+    const fetchSalons = async () => {
+      try {
+        const res = await api.get("/salons");
+        setSalons(res.data);
+      } catch (err) {
+        console.log("Error fetching salons:", err);
+      }
+    };
+    fetchSalons();
+  }, []);
+
+const filteredSalons = salons.filter(
+  (salon) =>
+    salon.name &&
     salon.name.toLowerCase().includes(search.toLowerCase())
-  );
+);
+
 
   return (
     <>
@@ -25,12 +41,12 @@ const SalonsPage = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {filteredSalons.map((salon) => (
-          <div key={salon.id} className="bg-white rounded-2xl shadow overflow-hidden">
+          <div key={salon._id} className="bg-white rounded-2xl shadow overflow-hidden">
             <img src={salon.image} className="h-48 w-full object-cover" />
 
             <div className="p-4">
-              <h2 className="font-bold text-black">{salon.name}</h2>
-              <p className="mb-1 text-black">⭐ {salon.rating} ({salon.reviews})</p>
+              <h2 className="font-bold text-black">{salon.salonName}</h2>
+              <p className="mb-1 text-gray-700">⭐ {salon.rating || 4.6} ({salon.reviews || 123})</p>
               <p className="text-gray-500 mb-4">{salon.location}</p>
 
               <button
@@ -44,7 +60,6 @@ const SalonsPage = () => {
         ))}
       </div>
 
-      {/* Modal */}
       {selectedSalon && (
         <SalonModal
           salon={selectedSalon}

@@ -4,23 +4,23 @@ import api from "../../api/axios"; // your axios instance
 const SalonSettingsPage = () => {
   const [formData, setFormData] = useState({
     salonName: "",
-    name: "",
+    fullName: "",
     email: "",
     location: "",
     bankAccount: "",
   });
   const [saved, setSaved] = useState(false);
-  const [loading, setLoading] = useState(true); // optional loading state
+  const [loading, setLoading] = useState(true); 
 
   // Fetch salon settings on mount
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const res = await api.get("/salon"); // GET /api/salon inside axios baseURL
+        const res = await api.get("/salon"); 
         const data = res.data;
         setFormData({
           salonName: data.salonName || "",
-          name: data.name || "",
+          fullName: data.fullName || "",
           email: data.email || "",
           location: data.location || "",
           bankAccount: data.bankAccount || "",
@@ -36,20 +36,22 @@ const SalonSettingsPage = () => {
     fetchSettings();
   }, []);
 
+  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setSaved(false);
   };
 
+  // Save updated settings
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.put("/salon", formData); // PUT /api/salon
+      const res = await api.put("/salon", formData); 
       const data = res.data;
 
       setFormData({
         salonName: data.salonName || "",
-        name: data.name || "",
+        fullName: data.fullName || "",
         email: data.email || "",
         location: data.location || "",
         bankAccount: data.bankAccount || "",
@@ -94,8 +96,8 @@ const SalonSettingsPage = () => {
             </label>
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="fullName"
+              value={formData.fullName}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg px-3 py-3 text-black focus:outline-none focus:ring-2 focus:ring-purple-300"
             />

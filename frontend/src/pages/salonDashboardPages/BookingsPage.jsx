@@ -1,16 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DollarSign, Calendar, Clock } from "lucide-react";
-import { salonBookingsData } from "../../data/index";
+import api from "../../api/axios";
 
 const BookingsPage = () => {
-  const [bookings, setBookings] = useState(salonBookingsData);
+  const [bookings, setBookings] = useState([]);
 
-  const markAsCompleted = (id) => {
-    setBookings((prev) =>
-      prev.map((booking) =>
-        booking.id === id ? { ...booking, status: "completed" } : booking
-      )
-    );
+  // FETCH SALON BOOKINGS
+  useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        const { data } = await api.get("/bookings/salon");
+        setBookings(data);
+      } catch (error) {
+        console.error("Failed to fetch bookings", error);
+      }
+    };
+
+    fetchBookings();
+  }, []);
+
+  // MARK AS COMPLETED
+  const markAsCompleted = async (id) => {
+    try {
+      const { data } = await api.put(`/bookings/${id}/complete`);
+
+      setBookings((prev) =>
+        prev.map((booking) =>
+          booking._id === id ? { ...booking, status: data.status } : booking,
+        ),
+      );
+    } catch (error) {
+      console.error("Failed to update booking", error);
+    }
   };
 
   return (
@@ -23,46 +44,53 @@ const BookingsPage = () => {
       <div className="space-y-4">
         {bookings.map((booking) => (
           <div
-            key={booking.id}
+            key={booking._id}
             className="flex flex-col border border-gray-200 md:flex-row md:items-center md:justify-between gap-4 bg-white rounded-lg p-4"
           >
             <div className="space-y-2 py-2">
-              <h3 className="font-bold text-black">{booking.name}</h3>
-              <p className="text-md text-gray-500">{booking.service}</p>
-
-              {/* Date */}
+              <h3 className="font-bold text-xl text-black">
+                {booking.userId?.fullName}
+              </h3>
+              <p className="text-md text-gray-500">{booking.serviceName}</p>
 
               <div className="text-sm flex">
-                <p className="text-gray-500 flex ">
-                  <Calendar size={18} />{" "}
-                  <span className="pl-1">{booking.date}</span>{" "}
+                <p className="text-gray-500 flex">
+                  <Calendar size={18} />
+                  <span className="pl-1">
+                    {new Date(booking.date).toLocaleDateString()}
+                  </span>
                 </p>
+
                 <p className="text-gray-500 pl-4 flex">
                   <Clock size={18} />
                   <span className="pl-1">{booking.time}</span>
                 </p>
+
                 <p className="text-gray-500 pl-4 flex">
-                  <DollarSign size={18} />{" "}
-                  <span className="pl-1">{booking.fee}</span>
+                  <DollarSign size={18} />
+                  <span className="pl-1">${booking.servicePrice}</span>
                 </p>
               </div>
             </div>
 
-            {/* Status & Mark Complete */}
             <div className="flex items-center gap-3">
               <span
-                className={`px-4 py-1.5 text-sm rounded-lg font-medium ${
-                  booking.status === "upcoming"
-                    ? "bg-blue-100 text-blue-600"
-                    : "bg-green-100 text-green-600"
+                className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                  booking.status === "Upcoming"
+                    ? "bg-blue-100 text-blue-700"
+                    : booking.status === "Completed"
+                      ? "bg-green-100 text-green-700"
+                      : booking.status === "Cancelled"
+                        ? "bg-red-100 text-red-700"
+                        : "bg-gray-100 text-red-700"
                 }`}
               >
                 {booking.status}
               </span>
 
-              {booking.status === "upcoming" && (
+              {booking.status === "Upcoming" && (
                 <button
-                  onClick={() => markAsCompleted(booking.id)}
+                  onClick={() => markAsCompleted(booking._id)}
                   className="px-4 py-2 text-md rounded-lg text-white bg-linear-to-r from-purple-500 to-pink-500 cursor-pointer"
                 >
                   Mark Complete

@@ -42,6 +42,17 @@ const userSchema = new mongoose.Schema(
       default: "customer",
     },
 
+    status: {
+      type: String,
+      enum: ["pending", "active", "frozen"],
+      default: function () {
+        return this.role === "salonOwner" ? "pending" : undefined;
+      },
+      required: function () {
+        return this.role === "salonOwner";
+      },
+    },
+
     salonName: {
       type: String,
       required: function () {
@@ -50,20 +61,16 @@ const userSchema = new mongoose.Schema(
       trim: true,
       maxlength: [50, "Salon Name must be less than 50 characters"],
     },
-    
-    name: {
-    type: String,
-    },
-    
+
     location: {
       type: String,
     },
-    
+
     bankAccount: {
       type: String,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 module.exports = mongoose.model("User", userSchema);

@@ -1,27 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SalonDetailsModal from "../../components/modals/adminDashboardModals/SalonsDetailsModal";
-import { adminSalonsData } from "../../data/index"; // ✅ import data
+import api from "../../api/axios";
 
-const Salons = () => {
-  const [salons, setSalons] = useState(adminSalonsData);
+const SalonsPage = () => {
+  const [salons, setSalons] = useState([]);
   const [selectedSalon, setSelectedSalon] = useState(null);
 
-  const removeSalon = (id) => {
-    setSalons((prev) => prev.filter((salon) => salon.id !== id));
-    setSelectedSalon(null);
+  const fetchSalons = async () => {
+    try {
+      const res = await api.get("/admin/salons");
+      setSalons(res.data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const toggleStatus = (id) => {
-    setSalons((prev) =>
-      prev.map((salon) =>
-        salon.id === id
-          ? {
-              ...salon,
-              status: salon.status === "active" ? "freeze" : "active",
-            }
-          : salon
-      )
-    );
+  useEffect(() => {
+    fetchSalons();
+  }, []);
+
+  const removeSalon = async (id) => {
+    try {
+      await api.delete(`/admin/salons/${id}`);
+      setSalons((prev) => prev.filter((s) => s._id !== id));
+      setSelectedSalon(null);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const toggleStatus = async (id) => {
+    try {
+      const res = await api.patch(`/admin/salons/${id}/status`);
+      setSalons((prev) =>
+        prev.map((s) => (s._id === id ? { ...s, status: res.data.status } : s)),
+      );
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -43,26 +59,28 @@ const Salons = () => {
           </thead>
           <tbody>
             {salons.map((salon) => (
-              <tr key={salon.id} className="border-t">
-                <td className="p-4 font-medium text-black">{salon.name}</td>
-                <td className="p-4 text-gray-600">{salon.owner}</td>
+              <tr key={salon._id} className="border-t">
+                <td className="p-4 font-medium text-black">
+                  {salon.salonName}
+                </td>
+                <td className="p-4 text-gray-600">{salon.fullName}</td>
                 <td className="p-4">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium ${
                       salon.status === "active"
                         ? "bg-green-100 text-green-700"
                         : salon.status === "freeze"
-                        ? "bg-red-100 text-red-600"
-                        : "bg-yellow-100 text-yellow-700"
+                          ? "bg-red-100 text-red-600"
+                          : "bg-yellow-100 text-yellow-700"
                     }`}
                   >
-                    {salon.status}
+                    {salon.status || "pending"}
                   </span>
                 </td>
                 <td className="p-4 text-black font-semibold">
-                  ${salon.earnings.toLocaleString()}
+                  ${salon.earnings?.toLocaleString() || 0}
                 </td>
-                <td className="p-4 text-black">{salon.bookings}</td>
+                <td className="p-4 text-black">{salon.bookings || 0}</td>
                 <td className="p-4">
                   <button
                     onClick={() => setSelectedSalon(salon)}
@@ -89,4 +107,4 @@ const Salons = () => {
   );
 };
 
-export default Salons;
+export default SalonsPage;

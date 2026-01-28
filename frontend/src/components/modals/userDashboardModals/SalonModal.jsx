@@ -11,10 +11,9 @@ const SalonModal = ({ salon, onClose }) => {
     <>
       <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-4">
         <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-
           {/* Header */}
           <div className="flex justify-between items-center p-5 border-b text-black">
-            <h2 className="text-xl font-bold">{salon.name}</h2>
+            <h2 className="text-xl font-bold">{salon.salonName}</h2>
             <button onClick={onClose}>
               <X className="w-6 h-6" />
             </button>
@@ -28,7 +27,7 @@ const SalonModal = ({ salon, onClose }) => {
             <div className="space-y-4">
               {salon.services.map((service) => (
                 <div
-                  key={service.id}
+                  key={service._id}
                   className="flex justify-between items-center bg-purple-50 p-4 rounded-xl"
                 >
                   <div>
@@ -55,13 +54,9 @@ const SalonModal = ({ salon, onClose }) => {
       {/* Payment Modal */}
       {selectedService && (
         <PaymentModal
+          salon={salon}
           service={selectedService}
           onClose={() => setSelectedService(null)}
-          onPay={(method) => {
-            console.log("Pay via:", method, selectedService);
-            setSelectedService(null);
-            onClose();
-          }}
         />
       )}
     </>
