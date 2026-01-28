@@ -1,7 +1,19 @@
 import React, { useEffect, useState } from "react";
-import api from "../../api/axios"; // your axios instance
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchSalonSettings,
+  updateSalonSettings,
+  clearSaved,
+} from "../../features/salonSetting/salonSettingsSlice";
 
 const SalonSettingsPage = () => {
+  const dispatch = useDispatch();
+
+  const { data: salonData, loading, saved, error } = useSelector(
+    (state) => state.salonSettings
+  );
+
+  // Local state for form editing
   const [formData, setFormData] = useState({
     salonName: "",
     fullName: "",
@@ -9,72 +21,48 @@ const SalonSettingsPage = () => {
     location: "",
     bankAccount: "",
   });
-  const [saved, setSaved] = useState(false);
-  const [loading, setLoading] = useState(true); 
 
-  // Fetch salon settings on mount
+  // Prefill local form when Redux data loads
   useEffect(() => {
-    const fetchSettings = async () => {
-      try {
-        const res = await api.get("/salon"); 
-        const data = res.data;
-        setFormData({
-          salonName: data.salonName || "",
-          fullName: data.fullName || "",
-          email: data.email || "",
-          location: data.location || "",
-          bankAccount: data.bankAccount || "",
-        });
-      } catch (err) {
-        console.error(err);
-        alert(err.response?.data?.message || "Failed to fetch settings");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSettings();
-  }, []);
-
-  // Handle input changes
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setSaved(false);
-  };
-
-  // Save updated settings
-  const handleSave = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await api.put("/salon", formData); 
-      const data = res.data;
-
+    if (salonData) {
       setFormData({
-        salonName: data.salonName || "",
-        fullName: data.fullName || "",
-        email: data.email || "",
-        location: data.location || "",
-        bankAccount: data.bankAccount || "",
+        salonName: salonData.salonName || "",
+        fullName: salonData.fullName || "",
+        email: salonData.email || "",
+        location: salonData.location || "",
+        bankAccount: salonData.bankAccount || "",
       });
-
-      setSaved(true);
-    } catch (err) {
-      console.error(err);
-      alert(err.response?.data?.message || "Failed to save settings");
     }
+  }, [salonData]);
+
+  // Fetch settings on mount
+  useEffect(() => {
+    dispatch(fetchSalonSettings());
+  }, [dispatch]);
+
+  // Handle input changes locally
+  const handleChange = (e) => {
+    dispatch(clearSaved());
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
+  // Submit updated settings
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateSalonSettings(formData));
+  };
+
 
   return (
-    <div className="bg-gray px-22 py-2">
+    <div className="bg-gray px-22">
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-black">Salon Settings</h1>
         <p className="text-sm text-gray-500">Manage your salon information</p>
       </div>
 
       <div className="bg-white rounded-xl shadow-sm max-w-4xl p-6">
-        <form onSubmit={handleSave} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* Salon Name */}
           <div className="p-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">

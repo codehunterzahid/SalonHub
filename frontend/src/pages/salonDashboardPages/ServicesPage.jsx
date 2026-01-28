@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Plus, Clock, SquarePen, Trash2, X, DollarSign } from "lucide-react";
-import api from "../../api/axios";
+
+import {
+  fetchServices,
+  addService,
+  updateService,
+  deleteService,
+} from "../../features/services/serviceThunks";
+
 import AddServiceModal from "../../components/modals/salonDashboardModals/AddServiceModal";
 import EditServiceModal from "../../components/modals/salonDashboardModals/EditServiceModal";
 
 const Services = () => {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+
+  const { services = [], loading, error } = useSelector(
+    (state) => state.services
+  );
 
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -17,68 +28,12 @@ const Services = () => {
      FETCH SERVICES
   ========================= */
   useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const res = await api.get("/services");
-        setServices(res.data);
-      } catch (error) {
-        console.error(error.response?.data?.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchServices();
-  }, []);
-
-  /* =========================
-     ADD SERVICE
-  ========================= */
-  const addService = async (service) => {
-    try {
-      const res = await api.post("/services", service);
-      setServices((prev) => [res.data, ...prev]);
-      setShowAddModal(false);
-    } catch (error) {
-      alert(error.response?.data?.message || "Failed to add service");
-    }
-  };
-
-  /* =========================
-     UPDATE SERVICE
-  ========================= */
-  const updateService = async (updatedService) => {
-    try {
-      const res = await api.put(
-        `/services/${updatedService._id}`,
-        updatedService,
-      );
-
-      setServices((prev) =>
-        prev.map((s) => (s._id === res.data._id ? res.data : s)),
-      );
-
-      setShowEditModal(false);
-    } catch (error) {
-      alert("Failed to update service");
-    }
-  };
-
-  /* =========================
-     DELETE SERVICE
-  ========================= */
-  const deleteService = async () => {
-    try {
-      await api.delete(`/services/${currentService._id}`);
-      setServices((prev) => prev.filter((s) => s._id !== currentService._id));
-      setShowDeleteModal(false);
-    } catch (error) {
-      alert("Failed to delete service");
-    }
-  };
+    dispatch(fetchServices());
+  }, [dispatch]);
 
   return (
     <div className="p-2">
+      {/* HEADER */}
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-3xl text-black font-bold">Services</h1>
@@ -94,14 +49,28 @@ const Services = () => {
         </button>
       </div>
 
-      {loading ? (
+      {/* LOADING / ERROR */}
+      {loading && (
         <p className="text-center text-gray-500">Loading services...</p>
-      ) : (
+      )}
+
+      {error && (
+        <p className="text-center text-red-500">{error}</p>
+      )}
+
+      {/* SERVICES LIST */}
+      {!loading && !error && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((service) => (
-            <div key={service.id} className="bg-white rounded-xl p-5 shadow-sm">
+            <div
+              key={service._id}
+              className="bg-white rounded-xl p-5 shadow-sm"
+            >
               <div className="flex justify-between">
-                <h2 className="text-xl font-bold text-black">{service.name}</h2>
+                <h2 className="text-xl font-bold text-black">
+                  {service.name}
+                </h2>
+
                 <div className="flex gap-3">
                   <button
                     onClick={() => {
@@ -111,6 +80,7 @@ const Services = () => {
                   >
                     <SquarePen size={18} className="text-purple-600" />
                   </button>
+
                   <button
                     onClick={() => {
                       setCurrentService(service);
@@ -128,34 +98,44 @@ const Services = () => {
               </div>
 
               <div className="mt-4 text-lg font-bold text-black flex items-center">
-                <DollarSign className="text-green-500" /> ${service.price}
+                <DollarSign className="text-green-500" />
+                ${service.price}
               </div>
             </div>
           ))}
         </div>
       )}
 
+      {/* ADD SERVICE MODAL */}
       {showAddModal && (
         <AddServiceModal
           onClose={() => setShowAddModal(false)}
-          onSave={addService}
+          onSave={(data) => {
+            dispatch(addService(data));
+            setShowAddModal(false);
+          }}
         />
       )}
 
-      {showEditModal && (
+      {/* EDIT SERVICE MODAL */}
+      {showEditModal && currentService && (
         <EditServiceModal
           service={currentService}
           onClose={() => setShowEditModal(false)}
-          onSave={updateService}
+          onSave={(data) => {
+            dispatch(updateService(data));
+            setShowEditModal(false);
+          }}
         />
       )}
 
-      {/* Delete Modal*/}
-      {showDeleteModal && (
+      {/* DELETE MODAL */}
+      {showDeleteModal && currentService && (
         <Modal onClose={() => setShowDeleteModal(false)}>
           <h2 className="text-lg font-semibold text-black mb-3">
             Delete Service
           </h2>
+
           <p className="text-gray-500 mb-6">
             Are you sure you want to delete{" "}
             <strong>{currentService.name}</strong>?
@@ -168,8 +148,12 @@ const Services = () => {
             >
               Cancel
             </button>
+
             <button
-              onClick={deleteService}
+              onClick={() => {
+                dispatch(deleteService(currentService._id));
+                setShowDeleteModal(false);
+              }}
               className="px-4 py-2 rounded-lg bg-red-500 text-white"
             >
               Delete

@@ -1,39 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { DollarSign, Calendar, Clock } from "lucide-react";
-import api from "../../api/axios";
+import {
+  fetchSalonBookings,
+  completeBooking,
+} from "../../features/bookings/bookingThunks";
 
 const BookingsPage = () => {
-  const [bookings, setBookings] = useState([]);
+  const dispatch = useDispatch();
+  const { bookings = [], loading, error } = useSelector(
+    (state) => state.bookings
+  );
 
-  // FETCH SALON BOOKINGS
   useEffect(() => {
-    const fetchBookings = async () => {
-      try {
-        const { data } = await api.get("/bookings/salon");
-        setBookings(data);
-      } catch (error) {
-        console.error("Failed to fetch bookings", error);
-      }
-    };
+    dispatch(fetchSalonBookings());
+  }, [dispatch]);
 
-    fetchBookings();
-  }, []);
-
-  // MARK AS COMPLETED
-  const markAsCompleted = async (id) => {
-    try {
-      const { data } = await api.put(`/bookings/${id}/complete`);
-
-      setBookings((prev) =>
-        prev.map((booking) =>
-          booking._id === id ? { ...booking, status: data.status } : booking,
-        ),
-      );
-    } catch (error) {
-      console.error("Failed to update booking", error);
-    }
+  const markAsCompleted = (id) => {
+    dispatch(completeBooking(id));
   };
 
+  if (loading) return <p className="p-6">Loading bookings...</p>;
+  if (error) return <p className="p-6 text-red-500">{error}</p>;
+  
   return (
     <div className="p-6 bg-gray">
       <div className="mb-6">

@@ -1,23 +1,17 @@
-import { stats } from "../../data/index";
-import { useEffect, useState } from "react";
-import api from "../../api/axios";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { stats } from "../../data";
+import { fetchSalonBookings } from "../../features/bookings/bookingThunks";
 
 const OverviewPage = () => {
-  const [bookings, setBookings] = useState([]);
+  const dispatch = useDispatch();
+  const { bookings = [], loading, error } = useSelector(
+    (state) => state.bookings
+  );
 
-  // FETCH SALON BOOKINGS
   useEffect(() => {
-    const fetchBookings = async () => {
-      try {
-        const { data } = await api.get("/bookings/salon");
-        setBookings(data);
-      } catch (error) {
-        console.error("Failed to fetch bookings", error);
-      }
-    };
-
-    fetchBookings();
-  }, []);
+    dispatch(fetchSalonBookings());
+  }, [dispatch]);
 
   return (
     <div className="py-2 px-6 bg-gray">
