@@ -74,7 +74,7 @@ const SalonsPage = () => {
                           : "bg-yellow-100 text-yellow-700"
                     }`}
                   >
-                    {salon.status || "pending"}
+                    {salon.status}
                   </span>
                 </td>
                 <td className="p-4 text-black font-semibold">

@@ -1,34 +1,61 @@
 const asyncHandler = require("../utils/asyncHandler");
 const User = require("../models/User");
 
-// GET /api/admin/salons
+/* ==============================
+   GET ALL SALONS
+   ============================== */
 const getAllSalons = asyncHandler(async (req, res) => {
-  const salons = await User.find({ role: "salonOwner" }).select("-password");
+  const salons = await User.find({ role: "salonOwner" })
+    .select("-password")
+    .sort({ createdAt: -1 });
+
   res.status(200).json(salons);
 });
 
-// DELETE /api/admin/salons/:id
+/* ==============================
+   REMOVE SALON (PERMANENT)
+   ============================== */
 const removeSalon = asyncHandler(async (req, res) => {
-  const salon = await User.findById(req.params.id);
+  const salon = await User.findOne({
+    _id: req.params.id,
+    role: "salonOwner",
+  });
+
   if (!salon) {
     res.status(404);
     throw new Error("Salon not found");
   }
-  await salon.remove();
-  res.status(200).json({ message: "Salon removed successfully" });
+
+  await User.findByIdAndDelete(req.params.id);
+
+  res.status(200).json({
+    message: "Salon removed successfully",
+    id: req.params.id,
+  });
 });
 
-// PATCH /api/admin/salons/:id/status
+/* ==============================
+   TOGGLE SALON STATUS
+   ============================== */
 const toggleSalonStatus = asyncHandler(async (req, res) => {
-  const salon = await User.findById(req.params.id);
+  const salon = await User.findOne({
+    _id: req.params.id,
+    role: "salonOwner",
+  });
+
   if (!salon) {
     res.status(404);
     throw new Error("Salon not found");
   }
 
   salon.status = salon.status === "active" ? "freeze" : "active";
-  await salon.save();
-  res.status(200).json({ status: salon.status });
+
+  await salon.save(); 
+  
+  res.status(200).json({
+    id: salon._id,
+    status: salon.status,
+  });
 });
 
 module.exports = {

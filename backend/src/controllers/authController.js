@@ -20,6 +20,7 @@ exports.signup = async (req, res) => {
       mobile,
       password: hashedPassword,
       role,
+      status: role === "salonOwner" ? "active" : undefined,
       salonName: role === "salonOwner" ? salonName : undefined,
     });
 
@@ -43,10 +44,15 @@ exports.login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Invalid credentials" });
 
+    if (user.role === "salonOwner" && user.status !== "active") {
+      res.status(403);
+      throw new Error("Your salon account is frozen. Please contact admin.");
+    }
+
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "1d" },
     );
 
     res.json({
@@ -60,11 +66,9 @@ exports.login = async (req, res) => {
         user.role === "customer"
           ? "/user"
           : user.role === "salonOwner"
-          ? "/salon"
-          : "/admin",
+            ? "/salon"
+            : "/admin",
     });
-
-    
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error.message });

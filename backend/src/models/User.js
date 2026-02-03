@@ -44,9 +44,9 @@ const userSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      enum: ["pending", "active", "frozen"],
+      enum: ["active", "freeze"],
       default: function () {
-        return this.role === "salonOwner" ? "pending" : undefined;
+        return this.role === "salonOwner" ? "active" : undefined;
       },
       required: function () {
         return this.role === "salonOwner";

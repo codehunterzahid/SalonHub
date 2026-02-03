@@ -1,30 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSalons } from "../../features/user/salonsSlice";
 import SalonModal from "../../components/modals/userDashboardModals/SalonModal";
-import api from "../../api/axios";
 
 const SalonsPage = () => {
+  const dispatch = useDispatch();
+  const { data: salons, loading, error } = useSelector((state) => state.salons);
+
   const [search, setSearch] = useState("");
-  const [salons, setSalons] = useState([]);
   const [selectedSalon, setSelectedSalon] = useState(null);
 
+  // Fetch salons on mount
   useEffect(() => {
-    const fetchSalons = async () => {
-      try {
-        const res = await api.get("/salons");
-        setSalons(res.data);
-      } catch (err) {
-        console.log("Error fetching salons:", err);
-      }
-    };
-    fetchSalons();
-  }, []);
+    dispatch(fetchSalons());
+  }, [dispatch]);
 
-const filteredSalons = salons.filter(
-  (salon) =>
-    salon.name &&
-    salon.name.toLowerCase().includes(search.toLowerCase())
-);
-
+  const filteredSalons = salons.filter(
+    (salon) =>
+      salon.salonName &&
+      salon.salonName.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <>

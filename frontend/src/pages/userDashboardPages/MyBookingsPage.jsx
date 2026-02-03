@@ -1,42 +1,42 @@
-import { useState, useEffect } from "react";
-import api from "../../api/axios";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Calendar, Clock, DollarSign } from "lucide-react";
+import {
+  fetchUserBookings,
+  cancelUserBooking,
+  rescheduleUserBooking,
+} from "../../features/user/userBookingSlice";
 
 const BookingsPage = () => {
-  const [bookings, setBookings] = useState([]);
-
-  const fetchBookings = async () => {
-    const res = await api.get("/bookings/my");
-    setBookings(res.data);
-  };
+  const dispatch = useDispatch();
+  const { data: bookings, loading, error } = useSelector(
+    (state) => state.userBookings
+  );
 
   useEffect(() => {
-    fetchBookings();
-  }, []);
+    dispatch(fetchUserBookings());
+  }, [dispatch]);
 
-  const cancelBooking = async (id) => {
-    await api.put(`/bookings/${id}/cancel`);
-    fetchBookings();
+  const handleCancel = (id) => {
+    dispatch(cancelUserBooking(id));
   };
 
-  const rescheduleBooking = async (id) => {
+  const handleReschedule = (id) => {
     const newDate = prompt("Enter new date (YYYY-MM-DD)");
     const newTime = prompt("Enter new time (HH:MM)");
 
     if (!newDate || !newTime) return;
 
-    await api.put(`/bookings/${id}/reschedule`, {
-      date: newDate,
-      time: newTime,
-    });
-
-    fetchBookings();
+    dispatch(rescheduleUserBooking({ bookingId: id, date: newDate, time: newTime }));
   };
 
+  if (loading) return <p className="text-center text-black mt-10">Loading bookings...</p>;
+  if (error) return <p className="text-center text-red-500 mt-10">{error}</p>;
+
   return (
-    <div className="px-18 py-10 max-w-5xl">
+    <div className="px-18 py-2 max-w-5xl">
       <h1 className="text-3xl text-black font-bold mb-2">My Bookings</h1>
-      <p className="text-gray-500">Manage Your appointments</p>
+      <p className="text-gray-500 mb-4">Manage Your appointments</p>
 
       {bookings.map((booking) => (
         <div
@@ -67,14 +67,14 @@ const BookingsPage = () => {
               {booking.status === "Upcoming" && (
                 <>
                   <button
-                    onClick={() => cancelBooking(booking._id)}
+                    onClick={() => handleCancel(booking._id)}
                     className="px-4 mr-3 py-2 bg-red-100 text-red-600 rounded"
                   >
                     Cancel
                   </button>
 
                   <button
-                    onClick={() => rescheduleBooking(booking._id)}
+                    onClick={() => handleReschedule(booking._id)}
                     className="px-4 py-2 bg-blue-100 text-blue-600 rounded"
                   >
                     Reschedule
